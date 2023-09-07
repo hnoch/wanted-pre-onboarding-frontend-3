@@ -7,7 +7,8 @@ const useGetKeyword = () => {
   const searchApi = async (text: string) => {
     await GetKeyword(text).then(res => {
       if (res) {
-        console.info('res ', res.data)
+        // console.info('res ', res.data)
+        console.info('calling api')
         dispatch({ type: 'SET_LIST', list: res.data })
       }
     })
