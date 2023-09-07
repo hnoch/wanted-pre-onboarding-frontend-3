@@ -1,6 +1,6 @@
 import SearchBox from './components/SearchBox'
 import KeywordBox from './components/KeywordBox'
-import { Header, Inner, Layout } from './components/cmnStyle'
+import { Header, Inner, Layout } from './components/CmnStyle'
 
 function App() {
   return (

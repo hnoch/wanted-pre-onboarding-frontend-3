@@ -1,6 +1,7 @@
 import { styled } from 'styled-components'
-import { RowBox } from './cmnStyle'
-import { SearchIcon } from '../img/cmnIcon'
+
+import { SearchIcon } from '../assets/CmnIcon'
+import { RowBox } from './CmnStyle'
 
 const SearchBox = () => {
   return (

@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { SearchIcon } from '../img/cmnIcon'
+import { SearchIcon } from '../assets/CmnIcon'
 
 const KeywordBox = () => {
   return (
