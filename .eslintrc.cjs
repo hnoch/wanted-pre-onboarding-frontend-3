@@ -17,6 +17,5 @@ module.exports = {
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }], // console.log() 금지
     eqeqeq: 'error', // 일치 연산자 사용 필수 === , 약한 비교 (==) 사용 금지!
     'dot-notation': 'error', // 가능하다면 dot notation 사용
-    'no-unused-vars': 'error', // 사용하지 않는 변수 금지
   },
 }

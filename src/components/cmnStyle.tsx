@@ -8,7 +8,7 @@ export const Layout = styled.div`
 export const Inner = styled.div`
   padding: 120px 0px;
   margin: 0px auto;
-  width: 600px;
+  width: 500px;
   text-align: center;
 `
 

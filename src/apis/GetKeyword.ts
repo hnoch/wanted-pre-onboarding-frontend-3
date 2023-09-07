@@ -1,7 +1,7 @@
 import axios from 'axios'
 import HttpService from './HttpService'
 
-export const GeyKeyword = async ({ search }: string) => {
+export const GetKeyword = async (search: string) => {
   try {
     const response = await HttpService.get('/sick', { params: { q: search } })
 

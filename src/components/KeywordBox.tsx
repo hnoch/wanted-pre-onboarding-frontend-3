@@ -1,14 +1,18 @@
 import { styled } from 'styled-components'
 import { SearchIcon } from '../assets/CmnIcon'
+import { TypeSick } from '../types/type'
+import { useKeyState } from '../hooks/useKeyContext'
 
 const KeywordBox = () => {
+  const state = useKeyState()
+
   return (
-    <Wrap>
+    <Wrap isshow={state.list.length > 0 ? 'block' : 'none'}>
       <div className="head">추천 검색어</div>
-      {[...Array(5)].map((_, idx) => (
+      {state.list.map((item: TypeSick, idx) => (
         <KeyItem key={idx}>
           <SearchIcon />
-          <div>간세포암</div>
+          <div>{item.sickNm}</div>
         </KeyItem>
       ))}
     </Wrap>
@@ -17,8 +21,10 @@ const KeywordBox = () => {
 
 export default KeywordBox
 
-const Wrap = styled.div`
-  border-radius: 42px;
+const Wrap = styled.div<{ isshow: string }>`
+  display: ${props => props.isshow};
+
+  border-radius: 20px;
   background-color: #ffffff;
   padding: 16px 24px;
   margin-top: 12px;
