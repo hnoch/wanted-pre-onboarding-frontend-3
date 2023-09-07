@@ -18,3 +18,11 @@ button {
 ::-webkit-scrollbar {
   display: none;
 }
+
+a {
+  text-decoration: none;
+
+  &:visited {
+    color: inherit;
+  }
+}

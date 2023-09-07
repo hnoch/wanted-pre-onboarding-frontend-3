@@ -31,7 +31,7 @@ const SearchBox = () => {
       dispatch({ type: 'SET_INDEX', selectIndex: state.selectIndex + 1 })
       dispatch({ type: 'SET_INPUT', input: state.list[state.selectIndex + 1].sickNm })
     } else if (e.key === 'Enter') {
-      goSearchPage()
+      location.href = 'https://www.google.com/search?q=' + state.list[state.selectIndex].sickNm
     }
   }
 
@@ -42,10 +42,6 @@ const SearchBox = () => {
   const inputBlur = () => {
     dispatch({ type: 'SET_FOCUS', isFocused: false })
     dispatch({ type: 'SET_INDEX', selectIndex: -1 })
-  }
-
-  const goSearchPage = () => {
-    window.open('https://www.google.com/search?q=' + state.list[state.selectIndex].sickNm)
   }
 
   return (

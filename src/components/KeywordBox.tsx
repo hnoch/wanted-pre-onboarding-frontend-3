@@ -7,7 +7,7 @@ const KeywordBox = () => {
   const state = useKeyState()
 
   return (
-    <Wrap isshow={state.isFocused ? 'block' : 'none'}>
+    <Wrap isshow={state.list.length > 0 ? 'block' : 'none'}>
       {state.input.length > 0 && state.list.length === 0 ? (
         <div className="none">검색어 없음</div>
       ) : (
@@ -15,7 +15,11 @@ const KeywordBox = () => {
       )}
       <KeyBox>
         {state.list.map((item: TypeSick, idx) => (
-          <KeyItem key={idx} selected={state.selectIndex === idx}>
+          <KeyItem
+            key={idx}
+            selected={state.selectIndex === idx}
+            href={'https://www.google.com/search?q=' + item.sickNm}
+          >
             <SearchIcon />
             <div>{item.sickNm}</div>
           </KeyItem>
@@ -57,13 +61,14 @@ const KeyBox = styled.div`
   }
 `
 
-const KeyItem = styled.button<{ selected: boolean }>`
+const KeyItem = styled.a<{ selected: boolean }>`
   padding: 10px 0px;
   display: flex;
   align-items: center;
   width: 100%;
   border-radius: 8px;
   background-color: ${props => (props.selected ? 'lightgray' : 'transparent')};
+  color: black;
 
   > div {
     font-size: 14px;
