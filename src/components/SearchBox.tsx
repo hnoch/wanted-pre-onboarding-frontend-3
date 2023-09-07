@@ -1,8 +1,6 @@
 import { styled } from 'styled-components'
-
 import { SearchIcon } from '../assets/CmnIcon'
 import { RowBox } from './CmnStyle'
-import { useCallback } from 'react'
 import { useKeyDispatch, useKeyState } from '../hooks/useKeyContext'
 import useGetKeyword from '../hooks/useGetKeyword'
 
@@ -11,17 +9,10 @@ const SearchBox = () => {
   const dispatch = useKeyDispatch()
   const { searchApi } = useGetKeyword()
 
-  const apiHandle = useCallback(
-    (value: string) => {
-      searchApi(value)
-    },
-    [searchApi],
-  )
-
   const textChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: 'SET_INPUT', input: e.target.value })
     if (e.target.value !== '') {
-      apiHandle(e.target.value)
+      searchApi(e.target.value)
       dispatch({ type: 'SET_INDEX', selectIndex: -1 })
     } else {
       dispatch({ type: 'SET_LIST', list: [] })
@@ -32,11 +23,11 @@ const SearchBox = () => {
     if (e.key === 'ArrowUp' && state.selectIndex > -1) {
       dispatch({ type: 'SET_INDEX', selectIndex: state.selectIndex - 1 })
       dispatch({ type: 'SET_INPUT', input: state.list[state.selectIndex - 1].sickNm })
-    } else if (
-      e.key === 'ArrowDown' &&
-      e.keyCode === 40 &&
-      state.selectIndex < state.list.length - 1
-    ) {
+    } else if (e.key === 'ArrowDown' && e.keyCode === 40) {
+      if (state.selectIndex === state.list.length - 1) {
+        dispatch({ type: 'SET_INDEX', selectIndex: 0 })
+        return
+      }
       dispatch({ type: 'SET_INDEX', selectIndex: state.selectIndex + 1 })
       dispatch({ type: 'SET_INPUT', input: state.list[state.selectIndex + 1].sickNm })
     } else if (e.key === 'Enter') {

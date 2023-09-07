@@ -7,4 +7,8 @@ HttpService.interceptors.request.use(config => {
   return config
 })
 
+HttpService.interceptors.response.use(response => {
+  return response
+})
+
 export default HttpService
